@@ -1,4 +1,0 @@
-Node.js server backend
-Rest API for the MCU
-a)	/stream – Stable MJPEG Feed
-b)	/upload – Image Upload Endpoint
