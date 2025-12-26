@@ -21,7 +21,7 @@ for person_name in os.listdir(DATASET_DIR):
     if not os.path.isdir(person_folder):
         continue
 
-    print(f"📁 Processing: {person_name}")
+    print(f" Processing: {person_name}")
 
     # Loop through each image
     for img_file in os.listdir(person_folder):
@@ -36,7 +36,7 @@ for person_name in os.listdir(DATASET_DIR):
             bgr_image = cv2.imread(img_path, cv2.IMREAD_COLOR)
 
             if bgr_image is None:
-                print(f"   ⚠ SKIP: Could not read {img_file}")
+                print(f"    SKIP: Could not read {img_file}")
                 continue
 
             # 2. Convert BGR to RGB
@@ -79,6 +79,7 @@ with open(ENCODINGS_FILE, "wb") as f:
 with open(NAMES_FILE, "wb") as f:
     pickle.dump(known_names, f)
 
-print(f"\n✅ Encoding complete.")
+print(f"\n Encoding complete.")
 print(f"   → Total faces encoded: {len(known_encodings)}")
+
 print(f"   → Saved to: {ENCODINGS_FILE}, {NAMES_FILE}")
