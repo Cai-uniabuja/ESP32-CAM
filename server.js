@@ -56,11 +56,11 @@ app.post("/upload", express.raw({ type: "image/jpeg", limit: "10mb" }), (req, re
     const filename = `frame_${Date.now()}.jpg`;
     fs.writeFileSync(path.join(uploadDir, filename), req.body);
 
-    console.log(`📸 Saved frame: ${filename}`);
+    console.log(`Saved frame: ${filename}`);
     res.status(200).json({ status: "ok", file: filename });
 
   } catch (err) {
-    console.error("❌ Upload error:", err);
+    console.error("Upload error:", err);
     res.status(500).json({ error: "Upload failed" });
   }
 });
@@ -122,7 +122,7 @@ app.get("/snapshot", async (req, res) => {
     res.send(Buffer.from(buffer));
 
   } catch (err) {
-    console.error("❌ Snapshot Error:", err.message);
+    console.error(" Snapshot Error:", err.message);
     res.status(500).send("Snapshot failed");
   }
 });
@@ -133,7 +133,7 @@ app.get("/snapshot", async (req, res) => {
 app.post("/attendance", (req, res) => {
   try {
     const attendance = req.body;
-    console.log("🟢 Attendance:", attendance);
+    console.log("Attendance:", attendance);
 
     // Placeholder for ConvexDB integration
     // await convex.mutation("attendance.insert", attendance);
@@ -141,7 +141,7 @@ app.post("/attendance", (req, res) => {
     res.status(200).json({ success: true, received: attendance });
 
   } catch (err) {
-    console.error("❌ Attendance error:", err);
+    console.error(" Attendance error:", err);
     res.status(500).send("Attendance failed");
   }
 });
@@ -155,7 +155,7 @@ app.use("/uploads", express.static(uploadDir));
 // Error handler
 // =========================
 app.use((err, req, res, next) => {
-  console.error("❌ Global Error:", err.message);
+  console.error(" Global Error:", err.message);
   res.status(500).json({ error: err.message });
 });
 
@@ -163,8 +163,9 @@ app.use((err, req, res, next) => {
 // Start server
 // =========================
 app.listen(port, () => {
-  console.log(`🚀 Server: http://localhost:${port}`);
-  console.log(`📸 Snapshot: http://localhost:${port}/snapshot`);
-  console.log(`🎥 Stream: http://localhost:${port}/stream`);
-  console.log(`📝 Attendance: http://localhost:${port}/attendance`);
+  console.log(` Server: http://localhost:${port}`);
+  console.log(` Snapshot: http://localhost:${port}/snapshot`);
+  console.log(` Stream: http://localhost:${port}/stream`);
+  console.log(` Attendance: http://localhost:${port}/attendance`);
 });
+
