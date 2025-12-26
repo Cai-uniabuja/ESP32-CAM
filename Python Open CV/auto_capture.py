@@ -19,7 +19,7 @@ def ensure_folder(name):
 def main():
     name = input("Enter name: ").strip()
     if not name:
-        print("❌ Name cannot be empty.")
+        print(" Name cannot be empty.")
         return
 
     save_path = ensure_folder(name)
@@ -28,7 +28,7 @@ def main():
     # Load detector once to save resources
     detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-    print("\n📸 Starting CLEAN sample capture...\n")
+    print("\n Starting CLEAN sample capture...\n")
 
     while count < SAMPLES:
         try:
@@ -36,7 +36,7 @@ def main():
 
             # 1. Check if server actually sent an image
             if resp.status_code != 200:
-                print(f"⏳ Waiting for video stream... (Server: {resp.status_code})", end='\r')
+                print(f" Waiting for video stream... (Server: {resp.status_code})", end='\r')
                 time.sleep(1)
                 continue
 
@@ -100,9 +100,10 @@ def main():
         except Exception as e:
             print(f"⚠ Resize error (face too close to edge?): {e}")
 
-    print("\n✅ DONE — Clean samples captured.")
+    print("\n DONE — Clean samples captured.")
     cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
+
     main()
