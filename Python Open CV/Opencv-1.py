@@ -34,7 +34,7 @@ def send_attendance(name):
         requests.post(ATTENDANCE_URL, json=payload, timeout=1)
         print(f"📨 Attendance sent → {payload}")
     except:
-        print("❌ Attendance send failed")
+        print(" Attendance send failed")
 
     last_sent[name] = now
 
@@ -52,26 +52,26 @@ def main():
         with open("names.pkl", "rb") as f:
             known_names = pickle.load(f)
 
-        print("👍 Encodings loaded.")
+        print("Encodings loaded.")
     except:
-        print("❌ ERROR: encodings.pkl or names.pkl missing.")
+        print("ERROR: encodings.pkl or names.pkl missing.")
         return
 
     stream_url = "http://localhost:5000/stream"
     cap = cv2.VideoCapture(stream_url)
 
     if not cap.isOpened():
-        print("❌ Cannot open stream")
+        print("Cannot open stream")
         return
 
-    print("🎥 Starting FAST recognition…")
+    print("Starting FAST recognition…")
 
     frame_count = 0
 
     while True:
         ret, frame = cap.read()
         if not ret:
-            print("⚠ Stream lost")
+            print(" Stream lost")
             break
 
         frame_count += 1
@@ -159,3 +159,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
