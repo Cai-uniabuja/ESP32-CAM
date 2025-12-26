@@ -32,7 +32,7 @@ def send_attendance(name):
 
     try:
         requests.post(ATTENDANCE_URL, json=payload, timeout=1)
-        print(f"📨 Attendance sent → {payload}")
+        print(f" Attendance sent → {payload}")
     except:
         print(" Attendance send failed")
 
@@ -159,4 +159,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
